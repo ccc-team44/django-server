@@ -5,8 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
-from cloudant.client import Cloudant
-
+from cloudant.client import CouchDB
+import pycouchdb
 @csrf_exempt
 def snippet_list(request):
     """
@@ -57,9 +57,14 @@ def list_tweets(request):
     """
     query couch db
     """
-    client = Cloudant(os.environ['COUCH_DB_USER'], os.environ['COUCH_DB_PASSWORD'], url=os.environ['COUCH_DB_ADDRESS'], auto_renew=True)
     
+    user = os.environ['COUCH_DB_USER']
+    password = os.environ['COUCH_DB_PASSWORD']
+    db_host = os.environ['COUCH_DB_ADDRESS']
+    
+
     if request.method == 'GET':
-        snippets = Snippet.objects.all()
-        serializer = SnippetSerializer(snippets, many=True)
-        return JsonResponse(serializer.data, safe=False)
+        server = pycouchdb.Server("http://" + user + ":" + password + "@" + db_host)
+        db = server.database("tweets")
+        print(db)
+        return JsonResponse({'foo': 'bar'}, safe=False)
