@@ -7,6 +7,15 @@ Just testing and play around with django + react
 
 3. Run
 
+## Environment Variables
+make sure you have the following variables in your environment
+```
+COUCH_DB_USER
+COUCH_DB_PASSWORD
+COUCH_DB_ADDRESS
+```
+
+
 ## Structure
 django_server is the main application 
 
