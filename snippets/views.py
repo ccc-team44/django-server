@@ -1,8 +1,11 @@
+import os
+
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer
+from cloudant.client import Cloudant
 
 @csrf_exempt
 def snippet_list(request):
@@ -48,3 +51,15 @@ def snippet_detail(request, pk):
     elif request.method == 'DELETE':
         snippet.delete()
         return HttpResponse(status=204)
+
+@csrf_exempt
+def list_tweets(request):
+    """
+    query couch db
+    """
+    client = Cloudant(os.environ['COUCH_DB_USER'], os.environ['COUCH_DB_PASSWORD'], url=os.environ['COUCH_DB_ADDRESS'], auto_renew=True)
+    
+    if request.method == 'GET':
+        snippets = Snippet.objects.all()
+        serializer = SnippetSerializer(snippets, many=True)
+        return JsonResponse(serializer.data, safe=False)
