@@ -26,4 +26,4 @@ django_server is the main application
 
 ## Test 
 Request a sample json data for react to plot
-- GET ``http://127.0.0.1:8001/snippets/1``
+- GET ``/snippets/1``
