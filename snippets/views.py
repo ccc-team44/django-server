@@ -64,7 +64,8 @@ def list_tweets(request):
     
 
     if request.method == 'GET':
-        server = pycouchdb.Server("http://" + user + ":" + password + "@" + db_host)
+        server = pycouchdb.Server("http://" + user + ":" + password + "@" + db_host, authmethod="basic")
         db = server.database("tweets")
-        print(db)
+        # doc = db.save({"data": { your data here}})
+        print(server)
         return JsonResponse({'foo': 'bar'}, safe=False)
