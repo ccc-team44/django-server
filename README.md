@@ -1,6 +1,6 @@
 Just testing and play around with django + react
 
-## Setup 
+## Setup
 1. Active virtual env
 
 2. Install requirements.txt
@@ -17,7 +17,7 @@ COUCH_DB_ADDRESS
 
 
 ## Structure
-django_server is the main application 
+django_server is the main application
 
 
 ## Add new application
@@ -28,11 +28,10 @@ django_server is the main application
     ...
     'newapp.apps.NewappConfig',
     ]
-    
 ```
 3. create models and migrations, profit
 
 
-## Test 
+## Test
 Request a sample json data for react to plot
 - GET ``/snippets/1``
