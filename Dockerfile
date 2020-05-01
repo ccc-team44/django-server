@@ -13,7 +13,7 @@ RUN apt-get update \
 
 COPY . /app/django-server
 
-EXPOSE 80
-COPY docker-entrypoint.sh /
-RUN chmod 755 /docker-entrypoint.sh
-ENTRYPOINT ["/docker-entrypoint.sh"]
+RUN chmod 755 /app/django-server/docker-entrypoint.sh
+
+EXPOSE 8001
+ENTRYPOINT ["/app/django-server/docker-entrypoint.sh"]
