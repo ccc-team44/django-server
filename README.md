@@ -14,7 +14,10 @@ COUCH_DB_USER
 COUCH_DB_PASSWORD
 COUCH_DB_ADDRESS
 ```
-
+eg
+```
+PYTHONUNBUFFERED=1;DJANGO_SETTINGS_MODULE=django_server.settings;COUCH_DB_USER=admin;COUCH_DB_PASSWORD=1111;COUCH_DB_ADDRESS=127.0.0.1:5984
+```
 
 ## Structure
 django_server is the main application 
