@@ -73,9 +73,9 @@ def list_tweets(request):
         db = server.database("tweets")
         
         # CREATE
-        doc_in = db.save(dummy_data)
+        #doc_in = db.save(dummy_data)
         
         # READ
-        doc_out = db.get(doc_in["_id"])
+        ##doc_out = db.get(doc_in["_id"])
         
-        return JsonResponse(doc_out["data"], safe=False)
+        return JsonResponse(dummy_data, safe=False)
